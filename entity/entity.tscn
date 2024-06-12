@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4n6w7xp6cppp"]
+
+[ext_resource type="Script" path="res://entity/Entity.cs" id="1_aujr4"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_wnpso"]
+radius = 0.2
+height = 1.8
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_14n17"]
+radius = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qvkf3"]
+size = Vector3(1, 2, 1)
+
+[node name="Entity" type="CharacterBody3D" node_paths=PackedStringArray("_weaponsNode")]
+collision_layer = 2
+collision_mask = 3
+script = ExtResource("1_aujr4")
+_weaponsNode = NodePath("Weapons")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+mesh = SubResource("CapsuleMesh_wnpso")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_14n17")
+
+[node name="Weapons" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31186, 0)
+
+[node name="Hitbox" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_qvkf3")

@@ -1,0 +1,130 @@
+[gd_scene load_steps=12 format=3 uid="uid://c0tqkml7swfs0"]
+
+[ext_resource type="PackedScene" uid="uid://dtfxuo4pbiqy3" path="res://entity/player/player.tscn" id="1_xoowk"]
+[ext_resource type="PackedScene" uid="uid://6t5nbep0kyhp" path="res://entity/enemy/enemy.tscn" id="2_bx4dr"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hu8rl"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_q8j4w"]
+sky_material = SubResource("ProceduralSkyMaterial_hu8rl")
+
+[sub_resource type="Environment" id="Environment_8r5ri"]
+background_mode = 2
+sky = SubResource("Sky_q8j4w")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nxox3"]
+vertices = PackedVector3Array(-49.5, 1, -49.5, -49.5, 1, 49.5, 49.5, 1, 49.5, 49.5, 1, -49.5)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_thi8x"]
+size = Vector3(100, 1, 100)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_8ekgn"]
+frequency = 0.4351
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_50xc1"]
+noise = SubResource("FastNoiseLite_8ekgn")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7cpfv"]
+albedo_texture = SubResource("NoiseTexture2D_50xc1")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ufgno"]
+material = SubResource("StandardMaterial3D_7cpfv")
+size = Vector3(100, 1, 100)
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_8r5ri")
+
+[node name="Player" parent="." instance=ExtResource("1_xoowk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 1, 12)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.796709, -0.413099, 0.441139, 0, 0.729924, 0.683529, -0.604363, -0.544574, 0.581537, 0, 6.97096, 0)
+
+[node name="Enemy" parent="." instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.441, 0.5, -1.1325)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_nxox3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NavigationRegion3D/StaticBody3D"]
+shape = SubResource("BoxShape3D_thi8x")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D/StaticBody3D"]
+mesh = SubResource("BoxMesh_ufgno")
+
+[node name="Enemy2" parent="." instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.45436, 0.5, 10.7715)
+
+[node name="Enemy3" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.6887, 0.5, 10.7715)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy4" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.49899, 0.5, 6.6934)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy5" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21266, 0.5, 5.89008)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy6" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.73874, 0.5, -2.72633)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy7" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.03357, 0.5, 4.05379)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy8" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41819, 0.5, 10.1517)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy9" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71126, 0.500001, 8.08035)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy10" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.13598, 0.500001, 14.7104)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy11" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.87903, 0.500001, 15.4767)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy12" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.59493, 0.500001, 12.1147)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy13" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.8397, 0.500001, 7.0625)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy14" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2712, 0.500001, 1.80535)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")
+
+[node name="Enemy15" parent="." node_paths=PackedStringArray("_agent", "_weaponsNode") instance=ExtResource("2_bx4dr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.8373, 0.500001, 9.5944)
+_agent = NodePath("../Enemy2/NavigationAgent3D")
+_weaponsNode = NodePath("../Enemy2/Weapons")

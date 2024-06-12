@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://6t5nbep0kyhp"]
+
+[ext_resource type="PackedScene" uid="uid://c4n6w7xp6cppp" path="res://entity/entity.tscn" id="1_qyil2"]
+[ext_resource type="Script" path="res://entity/enemy/Enemy.cs" id="2_oa5el"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d27v"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="Enemy" node_paths=PackedStringArray("_agent") instance=ExtResource("1_qyil2")]
+script = ExtResource("2_oa5el")
+_agent = NodePath("NavigationAgent3D")
+
+[node name="MeshInstance3D" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_0d27v")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]

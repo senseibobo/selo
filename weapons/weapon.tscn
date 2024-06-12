@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://bcyqi0m210x28"]
+
+[ext_resource type="Script" path="res://weapons/Weapon.cs" id="1_7keqr"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sccuu"]
+size = Vector3(1, 1, 0.951294)
+
+[node name="Weapon" type="Node3D" node_paths=PackedStringArray("_animationPlayer", "_hitArea")]
+script = ExtResource("1_7keqr")
+_animationPlayer = NodePath("AnimationPlayer")
+_hitArea = NodePath("HitArea")
+
+[node name="WeaponMesh" type="MeshInstance3D" parent="."]
+skeleton = NodePath("")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="HitArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.606384)
+shape = SubResource("BoxShape3D_sccuu")

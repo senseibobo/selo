@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtfxuo4pbiqy3"]
+
+[ext_resource type="PackedScene" uid="uid://c4n6w7xp6cppp" path="res://entity/entity.tscn" id="1_5q8rw"]
+[ext_resource type="Script" path="res://entity/player/Player.cs" id="2_4apag"]
+[ext_resource type="PackedScene" uid="uid://b30x6sdognonx" path="res://weapons/variations/broom/broom.tscn" id="3_6yea0"]
+
+[node name="Player" node_paths=PackedStringArray("_camera") instance=ExtResource("1_5q8rw")]
+script = ExtResource("2_4apag")
+_camera = NodePath("Camera3D")
+_defaultWeaponScene = ExtResource("3_6yea0")
+
+[node name="Camera3D" type="Camera3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.50504, 0)
