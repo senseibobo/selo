@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt33s56rngo1c"]
+
+[ext_resource type="Script" path="res://autoload/leaderboard/LeaderboardEntry.cs" id="1_6ns5v"]
+
+[node name="LeaderboardEntry" type="HBoxContainer" node_paths=PackedStringArray("_nameLabel", "_damageLabel")]
+script = ExtResource("1_6ns5v")
+_nameLabel = NodePath("NameLabel")
+_damageLabel = NodePath("DamageLabel")
+
+[node name="NameLabel" type="Label" parent="."]
+layout_mode = 2
+text = "Jorgovan Sokolovic"
+
+[node name="DamageLabel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "5189"
+horizontal_alignment = 2

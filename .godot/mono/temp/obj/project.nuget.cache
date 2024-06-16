@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "PRteWQWT+Cweob5tNoYIGuHYpYlgsFPD2GBkzXZRqNxHKUD5qNdHjRVD052t27XH14BRnpIF4wrKC5NoMeSnxw==",
+  "success": true,
+  "projectFilePath": "S:\\Godot Games\\selo\\CS106PZ.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\boboa\\.nuget\\packages\\godot.sourcegenerators\\4.2.2\\godot.sourcegenerators.4.2.2.nupkg.sha512",
+    "C:\\Users\\boboa\\.nuget\\packages\\godotsharp\\4.2.2\\godotsharp.4.2.2.nupkg.sha512",
+    "C:\\Users\\boboa\\.nuget\\packages\\godotsharpeditor\\4.2.2\\godotsharpeditor.4.2.2.nupkg.sha512"
+  ],
+  "logs": []
+}

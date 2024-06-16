@@ -6,11 +6,17 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d27v"]
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="Enemy" node_paths=PackedStringArray("_agent") instance=ExtResource("1_qyil2")]
+[node name="Enemy" node_paths=PackedStringArray("_agent", "_nameLabel") instance=ExtResource("1_qyil2")]
 script = ExtResource("2_oa5el")
 _agent = NodePath("NavigationAgent3D")
+_nameLabel = NodePath("NameLabel")
 
 [node name="MeshInstance3D" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_0d27v")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
+debug_enabled = true
+
+[node name="NameLabel" type="Label3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14152, 0)
+billboard = 2

@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6ymiv4csyvsm"]
+
+[ext_resource type="Script" path="res://autoload/leaderboard/Leaderboard.cs" id="1_nu0cv"]
+[ext_resource type="PackedScene" uid="uid://dt33s56rngo1c" path="res://autoload/leaderboard/leaderboard_entry.tscn" id="2_qpmui"]
+
+[node name="Leaderboard" type="CanvasLayer" node_paths=PackedStringArray("_leaderboardContainer")]
+script = ExtResource("1_nu0cv")
+_leaderboardContainer = NodePath("LeaderboardContainer")
+_leaderboardEntryScene = ExtResource("2_qpmui")
+
+[node name="LeaderboardContainer" type="VBoxContainer" parent="."]
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 228.0
+grow_vertical = 2
+
+[node name="DamageDoneLabel" type="Label" parent="LeaderboardContainer"]
+layout_mode = 2
+text = "DAMAGE DONE"
+horizontal_alignment = 1
+
+[node name="LeaderboardEntry" parent="LeaderboardContainer" instance=ExtResource("2_qpmui")]
+layout_mode = 2

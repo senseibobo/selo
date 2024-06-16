@@ -82,7 +82,7 @@ _data = {
 [node name="Broom" instance=ExtResource("1_3ud4h")]
 
 [node name="WeaponMesh" parent="." index="0"]
-transform = Transform3D(-4.07325e-08, -0.965926, -0.258819, -2.26267e-08, -0.258819, 0.965926, -1, 4.52008e-08, -1.13133e-08, 0.5, 0.1, -0.4)
+transform = Transform3D(6.06879e-06, -0.965927, -0.258816, 6.56146e-07, -0.258816, 0.965927, -1, -6.03183e-06, -9.36912e-07, 0.5, 0.1, -0.4)
 mesh = ExtResource("2_fbljp")
 
 [node name="AnimationPlayer" parent="." index="1"]

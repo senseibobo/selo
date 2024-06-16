@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://vvvjpcm3vn4q"]
+
+[ext_resource type="PackedScene" uid="uid://cjr6ab5758vjy" path="res://pickups/pickup.tscn" id="1_5d1mb"]
+[ext_resource type="ArrayMesh" uid="uid://dad0pm7lx27dn" path="res://weapons/variations/broom/broom_mesh.res" id="2_7gd4b"]
+[ext_resource type="Script" path="res://pickups/weapon/WeaponPickup.cs" id="2_vrgmp"]
+[ext_resource type="PackedScene" uid="uid://b30x6sdognonx" path="res://weapons/variations/broom/broom.tscn" id="3_m4htv"]
+
+[node name="BroomPickup" instance=ExtResource("1_5d1mb")]
+script = ExtResource("2_vrgmp")
+WeaponScene = ExtResource("3_m4htv")
+
+[node name="BroomMesh" type="MeshInstance3D" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.159209, 0)
+mesh = ExtResource("2_7gd4b")
+skeleton = NodePath("")

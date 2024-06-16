@@ -15,6 +15,10 @@ run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Leaderboard="*res://autoload/leaderboard/leaderboard.tscn"
+
 [display]
 
 window/size/viewport_width=1280
@@ -54,6 +58,7 @@ attack={
 
 [layer_names]
 
+3d_render/layer_2="Player Weapon"
 3d_physics/layer_1="Ground"
 3d_physics/layer_2="Entity Movement"
 3d_physics/layer_3="Entity Hitbox"

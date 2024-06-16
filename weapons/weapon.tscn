@@ -5,10 +5,11 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_sccuu"]
 size = Vector3(1, 1, 0.951294)
 
-[node name="Weapon" type="Node3D" node_paths=PackedStringArray("_animationPlayer", "_hitArea")]
+[node name="Weapon" type="Node3D" node_paths=PackedStringArray("_animationPlayer", "_hitArea", "WeaponMesh")]
 script = ExtResource("1_7keqr")
 _animationPlayer = NodePath("AnimationPlayer")
 _hitArea = NodePath("HitArea")
+WeaponMesh = NodePath("WeaponMesh")
 
 [node name="WeaponMesh" type="MeshInstance3D" parent="."]
 skeleton = NodePath("")
