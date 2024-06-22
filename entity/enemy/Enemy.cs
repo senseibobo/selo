@@ -132,11 +132,9 @@ public partial class Enemy : Entity
         if (IsInstanceValid(_target))
         {
             PathfindToward(_target.GlobalPosition);
-            _attackTimer -= (float)delta;
-            if (_attackTimer <= 0)
+            if (IsInstanceValid(_weapon))
             {
-                _attackTimer = AttackTime;
-                Attack();
+                _weapon.ProcessAi(this);
             }
 
             _entityTargetTimer -= (float)delta;
@@ -205,8 +203,8 @@ public partial class Enemy : Entity
         {
             GD.Print("PICKED UP");
             _enemyState = EnemyState.Chasing;
-            StandardMaterial3D mat = GetNode<MeshInstance3D>("MeshInstance3D").MaterialOverride as StandardMaterial3D;
-            mat.AlbedoColor = Colors.Aqua;
+            // StandardMaterial3D mat = GetNode<MeshInstance3D>("MeshInstance3D").MaterialOverride as StandardMaterial3D;
+            // mat.AlbedoColor = Colors.Aqua;
         }
     }
 }

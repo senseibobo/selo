@@ -34,6 +34,15 @@ public partial class Player : Entity
         MoveDir(Basis.Z * vInput + Basis.X * hInput);
         if (Input.IsActionJustPressed("attack"))
             Attack();
+        else if (Input.IsActionJustReleased("attack"))
+            ReleaseAttack();
+    }
+
+    protected override void ProcessSliding(double delta)
+    {
+        base.ProcessSliding(delta);
+        if (Input.IsActionJustReleased("attack"))
+            ReleaseAttack();
     }
 
     protected override void SetWeapon(Weapon weapon)

@@ -2,5 +2,10 @@
 
 [ext_resource type="Script" path="res://pickups/Pickup.cs" id="1_eswl6"]
 
-[node name="Pickup" type="Node3D"]
+[node name="Pickup" type="RigidBody3D"]
+mass = 0.45
 script = ExtResource("1_eswl6")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]

@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5usb6rs3w5w4"]
+
+[ext_resource type="Texture2D" uid="uid://b78kxo7eecpx3" path="res://textures/woodenhouse.png" id="1_5g5ca"]
+[ext_resource type="Texture2D" uid="uid://bumivs2jj83sp" path="res://textures/houseroof.png" id="2_3p6ty"]
+[ext_resource type="PackedScene" uid="uid://c2voso8liuday" path="res://models/house.blend" id="3_tsdc8"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_bnj0k"]
+data = PackedVector3Array(-5, 1.75, 3, 5, 1.75, 3, -5, -1.75, 3, 5, 1.75, 3, 5, -1.75, 3, -5, -1.75, 3, 5, 1.75, -3, -5, 1.75, -3, 5, -1.75, -3, -5, 1.75, -3, -5, -1.75, -3, 5, -1.75, -3, 5, 1.75, 3, 5, 1.75, -3, 5, -1.75, 3, 5, 1.75, -3, 5, -1.75, -3, 5, -1.75, 3, -5, 1.75, -3, -5, 1.75, 3, -5, -1.75, -3, -5, 1.75, 3, -5, -1.75, 3, -5, -1.75, -3, 5, 1.75, 3, -5, 1.75, 3, 5, 1.75, -3, -5, 1.75, 3, -5, 1.75, -3, 5, 1.75, -3, -5, -1.75, 3, 5, -1.75, 3, -5, -1.75, -3, 5, -1.75, 3, 5, -1.75, -3, -5, -1.75, -3)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t4gbs"]
+size = Vector3(5.619, 1, 6.79)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_w820y"]
+albedo_texture = ExtResource("1_5g5ca")
+uv1_scale = Vector3(11.935, 3.65, 3.65)
+
+[sub_resource type="BoxMesh" id="BoxMesh_djq1a"]
+size = Vector3(10, 3.5, 6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d2hng"]
+albedo_texture = ExtResource("2_3p6ty")
+uv1_scale = Vector3(5.685, 5.515, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_0srv0"]
+size = Vector3(11.095, 1.78, 6.82)
+
+[node name="House" type="StaticBody3D"]
+metadata/_edit_group_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+shape = SubResource("ConcavePolygonShape3D_bnj0k")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.950997, -0.3092, 0, 0.3092, 0.950997, 0, 0, 0, 1, -2.53489, 4.10494, 0)
+shape = SubResource("BoxShape3D_t4gbs")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.951057, 0.309017, 0, -0.309017, 0.951057, 0, 0, 0, 1, 2.46511, 4.10494, 0)
+shape = SubResource("BoxShape3D_t4gbs")
+
+[node name="Walls" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = SubResource("StandardMaterial3D_w820y")
+mesh = SubResource("BoxMesh_djq1a")
+
+[node name="Roof" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.56976, 0)
+material_override = SubResource("StandardMaterial3D_d2hng")
+mesh = SubResource("PrismMesh_0srv0")
+
+[node name="house" parent="." instance=ExtResource("3_tsdc8")]

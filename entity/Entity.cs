@@ -23,13 +23,12 @@ public partial class Entity : CharacterBody3D
     public virtual float Deceleration => 120.0f;
     public virtual float Gravity => 9.81f;
     public virtual float SlideDrag => 50.0f;
-    public virtual float AttackDrag => 50.0f;
     public virtual float RotationSpeed => 10f;
     public float Health;
 
     public LeaderboardEntry LeaderboardEntry;
 
-    private Weapon _weapon;
+    protected Weapon _weapon;
 
     private EntityState _entityState;
     private float _yVelocity = 0.0f;
@@ -38,17 +37,19 @@ public partial class Entity : CharacterBody3D
     public override void _EnterTree()
     {
         LeaderboardEntry = Leaderboard.Instance.AddEntry(this);
-        base._EnterTree();
         Entities.Add(this);
         Health = MaxHealth;
-        GD.Print(Health);
     }
 
     public override void _ExitTree()
     {
-        Leaderboard.Instance.RemoveEntry(LeaderboardEntry);
-        base._ExitTree();
+        //Leaderboard.Instance.RemoveEntry(LeaderboardEntry);
+        LeaderboardEntry.Modulate = Colors.Red;
         Entities.Remove(this);
+        if (Entities.Count == 1)
+        {
+            Leaderboard.Instance.EndGame();
+        }
     }
 
     public override void _Ready()
@@ -68,6 +69,10 @@ public partial class Entity : CharacterBody3D
         }
         MoveAndSlide();
         _yVelocity = Velocity.Y;
+        if (GlobalPosition.Y < -100f)
+        {
+            Death();
+        }
     }
 
     protected virtual void ProcessFree(double delta)
@@ -95,7 +100,7 @@ public partial class Entity : CharacterBody3D
             change = Deceleration;
         Velocity = Velocity.MoveToward(newVelocity, change * (float)GetPhysicsProcessDeltaTime());
         if (_attacking)
-            ApplyDrag(AttackDrag * (float)GetPhysicsProcessDeltaTime());
+            ApplyDrag(_weapon.Drag * (float)GetPhysicsProcessDeltaTime());
     }
 
     protected void RotateTowardsDirection(Vector3 direction, double delta)
@@ -118,7 +123,7 @@ public partial class Entity : CharacterBody3D
         Health -= damage;
         if (Health <= 0)
         {
-            QueueFree();
+            Death();
             return;
         }
         _entityState = EntityState.Sliding;
@@ -131,6 +136,14 @@ public partial class Entity : CharacterBody3D
         {
             _weapon.Attack();
             _attacking = true;
+        }
+    }
+
+    protected void ReleaseAttack()
+    {
+        if (_weapon != null)
+        {
+            _weapon.ReleaseAttack();
         }
     }
 
@@ -147,6 +160,11 @@ public partial class Entity : CharacterBody3D
         _weapon.Owner = this;
     }
 
+    protected void Death()
+    {
+        QueueFree();
+    }
+
     private void OnWeaponFinishedAttack()
     {
         _attacking = false;
@@ -159,6 +177,7 @@ public partial class Entity : CharacterBody3D
         {
             if (_weapon == null)
             {
+                SetWeapon(weaponPickup.WeaponScene.Instantiate<Weapon>());
                 return true;
             }
         }

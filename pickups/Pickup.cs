@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Pickup : Node3D
+public partial class Pickup : RigidBody3D
 {
 
 	public override void _Process(double delta)

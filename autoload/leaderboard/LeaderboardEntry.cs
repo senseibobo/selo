@@ -6,18 +6,19 @@ public partial class LeaderboardEntry : HBoxContainer
 	[Export] Label _nameLabel;
 	[Export] Label _damageLabel;
 
-	float _damage;
+	public float Damage;
 
 	public void SetEntryInfo(string name, float damage)
 	{
 		_nameLabel.Text = name;
 		_damageLabel.Text = damage.ToString();
-		_damage = damage;
+		Damage = damage;
 	}
 
 	public void AddDamage(float damage)
 	{
-		_damage += damage;
-		_damageLabel.Text = _damage.ToString();
+		Damage += damage;
+		_damageLabel.Text = Damage.ToString();
+		Leaderboard.Instance.SortEntries();
 	}
 }

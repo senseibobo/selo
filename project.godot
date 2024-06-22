@@ -23,10 +23,15 @@ Leaderboard="*res://autoload/leaderboard/leaderboard.tscn"
 
 window/size/viewport_width=1280
 window/size/viewport_height=720
+window/size/mode=3
 
 [dotnet]
 
 project/assembly_name="CS106PZ"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/zylann.hterrain/plugin.cfg")
 
 [input]
 

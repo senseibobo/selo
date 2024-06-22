@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://weapons/Weapon.cs" id="1_7keqr"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sccuu"]
-size = Vector3(1, 1, 0.951294)
+size = Vector3(1, 1, 2.40482)
 
 [node name="Weapon" type="Node3D" node_paths=PackedStringArray("_animationPlayer", "_hitArea", "WeaponMesh")]
 script = ExtResource("1_7keqr")

@@ -5,9 +5,12 @@ public partial class Weapon : Node3D
 {
     public Action FinishedAttack;
     public virtual float Damage => 10f;
-    [Export] AnimationPlayer _animationPlayer;
-    [Export] Area3D _hitArea;
+    public virtual float Drag => 85f;
+    public virtual bool AttackWhileSliding => true;
+    [Export] protected AnimationPlayer _animationPlayer;
+    [Export] protected Area3D _hitArea;
     [Export] public MeshInstance3D WeaponMesh;
+    [Export] public PackedScene _pickupScene;
 
     public override void _EnterTree()
     {
@@ -25,6 +28,11 @@ public partial class Weapon : Node3D
         _animationPlayer.Play("attack");
     }
 
+    public virtual void ReleaseAttack()
+    {
+
+    }
+
     public virtual void Hit()
     {
         foreach (Node area in _hitArea.GetOverlappingAreas())
@@ -34,6 +42,22 @@ public partial class Weapon : Node3D
             {
                 entity.Hit(Damage, -GlobalBasis.Z.Normalized());
                 (Owner as Entity).LeaderboardEntry.AddDamage(Damage);
+            }
+        }
+    }
+
+    public virtual void ProcessAi(Entity owner)
+    {
+        foreach (Node area in _hitArea.GetOverlappingAreas())
+        {
+            Node parent = area.GetParent();
+            if (parent is Entity entity)
+            {
+                if (entity != owner)
+                {
+                    GetTree().CreateTimer(0.1).Timeout += Attack;
+                    break;
+                }
             }
         }
     }

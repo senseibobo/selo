@@ -1,10 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://6t5nbep0kyhp"]
+[gd_scene load_steps=8 format=3 uid="uid://6t5nbep0kyhp"]
 
 [ext_resource type="PackedScene" uid="uid://c4n6w7xp6cppp" path="res://entity/entity.tscn" id="1_qyil2"]
 [ext_resource type="Script" path="res://entity/enemy/Enemy.cs" id="2_oa5el"]
+[ext_resource type="Texture2D" uid="uid://behdqwwf5cmio" path="res://textures/tregerica.png" id="3_wl2si"]
+[ext_resource type="Texture2D" uid="uid://daqw4l5kblejm" path="res://textures/head.png" id="4_pmjrt"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d27v"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_texture = ExtResource("3_wl2si")
+uv1_scale = Vector3(1, 1.85, 1)
+uv1_offset = Vector3(0.505, -0.47, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3rajy"]
+albedo_texture = ExtResource("4_pmjrt")
+uv1_scale = Vector3(1, 1.18, 1)
+uv1_offset = Vector3(0, -0.08, 0)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ugda5"]
+radial_segments = 12
+rings = 12
 
 [node name="Enemy" node_paths=PackedStringArray("_agent", "_nameLabel") instance=ExtResource("1_qyil2")]
 script = ExtResource("2_oa5el")
@@ -14,9 +27,13 @@ _nameLabel = NodePath("NameLabel")
 [node name="MeshInstance3D" parent="." index="0"]
 material_override = SubResource("StandardMaterial3D_0d27v")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="2"]
-debug_enabled = true
+[node name="Head" type="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(0.57747, 0, -2.73991e-09, 0, 0.917564, 0, 3.19657e-09, 0, 0.494975, 0, 1.60737, 0)
+material_override = SubResource("StandardMaterial3D_3rajy")
+mesh = SubResource("SphereMesh_ugda5")
 
-[node name="NameLabel" type="Label3D" parent="." index="5"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="3"]
+
+[node name="NameLabel" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14152, 0)
 billboard = 2
