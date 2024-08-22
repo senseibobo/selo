@@ -118,7 +118,7 @@ public partial class Entity : CharacterBody3D
         Velocity = new Vector3(xzVelocity.X, _yVelocity, xzVelocity.Y);
     }
 
-    public void Hit(float damage, Vector3 direction)
+    public virtual void Hit(float damage, Vector3 direction)
     {
         Health -= damage;
         if (Health <= 0)

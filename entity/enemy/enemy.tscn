@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://6t5nbep0kyhp"]
+[gd_scene load_steps=9 format=3 uid="uid://6t5nbep0kyhp"]
 
 [ext_resource type="PackedScene" uid="uid://c4n6w7xp6cppp" path="res://entity/entity.tscn" id="1_qyil2"]
 [ext_resource type="Script" path="res://entity/enemy/Enemy.cs" id="2_oa5el"]
 [ext_resource type="Texture2D" uid="uid://behdqwwf5cmio" path="res://textures/tregerica.png" id="3_wl2si"]
 [ext_resource type="Texture2D" uid="uid://daqw4l5kblejm" path="res://textures/head.png" id="4_pmjrt"]
+[ext_resource type="Script" path="res://entity/enemy/enemy_audio_player.gd" id="5_dtujm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0d27v"]
 albedo_texture = ExtResource("3_wl2si")
@@ -19,8 +20,9 @@ uv1_offset = Vector3(0, -0.08, 0)
 radial_segments = 12
 rings = 12
 
-[node name="Enemy" node_paths=PackedStringArray("_agent", "_nameLabel") instance=ExtResource("1_qyil2")]
+[node name="Enemy" node_paths=PackedStringArray("_soundPlayer", "_agent", "_nameLabel") instance=ExtResource("1_qyil2")]
 script = ExtResource("2_oa5el")
+_soundPlayer = NodePath("AudioPlayer")
 _agent = NodePath("NavigationAgent3D")
 _nameLabel = NodePath("NameLabel")
 
@@ -37,3 +39,6 @@ mesh = SubResource("SphereMesh_ugda5")
 [node name="NameLabel" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.14152, 0)
 billboard = 2
+
+[node name="AudioPlayer" type="AudioStreamPlayer3D" parent="." index="7"]
+script = ExtResource("5_dtujm")

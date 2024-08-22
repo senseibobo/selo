@@ -5,7 +5,7 @@ public partial class Player : Entity
 {
     public static Player Instance;
     public virtual float Sensitivity => 1f;
-    [Export] Camera3D _camera;
+    [Export] PlayerCamera _camera;
 
     public override void _EnterTree()
     {
@@ -61,5 +61,11 @@ public partial class Player : Entity
             rot.X = Mathf.Clamp(rot.X, -20f, 20f);
             _camera.RotationDegrees = rot;
         }
+    }
+
+    public override void Hit(float damage, Vector3 direction)
+    {
+        base.Hit(damage, direction);
+        _camera.ShakeScreen(damage / 20f, 600f, 0.5f);
     }
 }

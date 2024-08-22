@@ -4,7 +4,7 @@ using System;
 public partial class Axe : Weapon
 {
 	[Export] Area3D _scanArea;
-	public override float Damage => (0.5f + (float)_animationPlayer.CurrentAnimationPosition) * 40f;
+	public override float Damage => (0.5f + (float)_animationPlayer.CurrentAnimationPosition) * 15f;
 	public override float Drag => 0f;
 	public override bool AttackWhileSliding => true;
 

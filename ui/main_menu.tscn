@@ -1,0 +1,521 @@
+[gd_scene load_steps=20 format=3 uid="uid://bnd7i2njim4a7"]
+
+[ext_resource type="FontFile" uid="uid://bwmshsvd88r2u" path="res://ui/Sunbright.otf" id="1_6b0m1"]
+[ext_resource type="Script" path="res://ui/main_menu.gd" id="1_lowsg"]
+[ext_resource type="Texture2D" uid="uid://4bysmaf2vd" path="res://textures/villagerhut.png" id="1_tlomf"]
+[ext_resource type="FontFile" uid="uid://bnwaa2wossu8s" path="res://ui/Another Danger - Demo.otf" id="2_a4645"]
+[ext_resource type="Texture2D" uid="uid://wilurvmpu2st" path="res://textures/angryvillagers.png" id="2_cijyp"]
+[ext_resource type="Texture2D" uid="uid://cgygy2tsvkl55" path="res://textures/titlevillager.png" id="3_sr7en"]
+[ext_resource type="AudioStream" uid="uid://beou4xdjgasuw" path="res://sound/metalpipe.ogg" id="6_m7aug"]
+[ext_resource type="AudioStream" uid="uid://cigi03sjyil2h" path="res://sound/manscreaming.mp3" id="7_4glnc"]
+[ext_resource type="AudioStream" uid="uid://dfgm76jtq3vvk" path="res://sound/villagersshouting.ogg" id="7_656y5"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r0pe0"]
+font = ExtResource("1_6b0m1")
+font_size = 121
+font_color = Color(0.533333, 0.457259, 0, 1)
+outline_size = 8
+outline_color = Color(0.535156, 0.382575, 0, 1)
+shadow_size = 11
+shadow_color = Color(0, 0, 0, 1)
+shadow_offset = Vector2(7.835, 9.62)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1any8"]
+font = ExtResource("2_a4645")
+font_size = 121
+font_color = Color(0.53, 0, 0, 1)
+shadow_size = 11
+shadow_color = Color(1, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_mttce"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g6v0f"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cig36"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_isguq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udj8r"]
+
+[sub_resource type="Animation" id="Animation_xphur"]
+resource_name = "startanimation"
+length = 5.0
+step = 0.05
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1226, -0.25, 0, 0.25, 0, 377, -0.8, 0.092926, 0.25, 0),
+"times": PackedFloat32Array(0, 1)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(1)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(702, -0.25, 0, 0.25, 0, 9, -0.8, -38.3171, 0.25, 0),
+"times": PackedFloat32Array(1, 2)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Title:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 2.4)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Title:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.5, 0.0235513, 1, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2, 2.4)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(2.3, 2.4, 2.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Title:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(446, -0.25, 0, 0.25, 0, 446, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.4, 2.7)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Title:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(213, -0.25, 0, 0.05, -162.902, 37, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.4, 2.7)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PLAY:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(589.5, -0.25, 0, 0.25, 0, 589.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(2.6, 2.85)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PLAY:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(769, -0.074475, -224.147, 0, -201.83, 441, -0.174475, 74.2516, 0.25, 0),
+"times": PackedFloat32Array(2.6, 2.85)
+}
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("MetalPipe")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_m7aug")
+}],
+"times": PackedFloat32Array(2.2)
+}
+tracks/11/use_blend = true
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Villagers")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.95),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/13/type = "audio"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("ManScreaming")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("7_4glnc")
+}],
+"times": PackedFloat32Array(0.3)
+}
+tracks/13/use_blend = true
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("TextureRect2:size")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 768)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("TextureRect:size")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 768)]
+}
+
+[sub_resource type="Animation" id="Animation_qa74i"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1226, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("TextureRect:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("TextureRect2:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-50, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("TextureRect2:position:y")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(702, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Title:scale:x")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Title:scale:y")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(1e-05, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("ColorRect:color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Title:position:x")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(446, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Title:position:y")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(213, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "bezier"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("PLAY:position:x")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(589.5, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "bezier"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("PLAY:position:y")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(769, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("TextureRect2:size")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 768)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("TextureRect:size")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1024, 768)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_umhp3"]
+_data = {
+"RESET": SubResource("Animation_qa74i"),
+"startanimation": SubResource("Animation_xphur")
+}
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_lowsg")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+modulate = Color(0.59375, 0.59375, 0.59375, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_tlomf")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+modulate = Color(0.59375, 0.59375, 0.59375, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = 702.0
+offset_right = 974.0
+offset_bottom = 1470.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_cijyp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1226.0
+offset_top = -5.0
+offset_right = 2250.0
+offset_bottom = 763.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_sr7en")
+
+[node name="Title" type="Control" parent="."]
+custom_minimum_size = Vector2(388, 294)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 446.0
+offset_top = 213.0
+offset_right = 3.86004e+07
+offset_bottom = 2.02004e+07
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1e-05, 1e-05)
+pivot_offset = Vector2(194, 147)
+size_flags_horizontal = 4
+metadata/_edit_group_ = true
+
+[node name="Village" type="Label" parent="Title"]
+layout_mode = 0
+offset_right = 1.70002e+07
+offset_bottom = 3.50015e+06
+text = "Village"
+label_settings = SubResource("LabelSettings_r0pe0")
+
+[node name="RAGE" type="Label" parent="Title"]
+layout_mode = 0
+offset_left = 84.0
+offset_top = 94.0
+offset_right = 1.88002e+07
+offset_bottom = 4.70015e+06
+text = "RAGE"
+label_settings = SubResource("LabelSettings_1any8")
+
+[node name="PLAY" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 589.5
+offset_top = 769.0
+offset_right = 690.5
+offset_bottom = 866.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.556863, 0, 0.0470588, 1)
+theme_override_colors/font_outline_color = Color(1, 0.0860873, 0, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_a4645")
+theme_override_font_sizes/font_size = 56
+theme_override_styles/normal = SubResource("StyleBoxEmpty_mttce")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_g6v0f")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_cig36")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_isguq")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_udj8r")
+text = "PLAY"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_umhp3")
+}
+autoplay = "startanimation"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+metadata/_edit_lock_ = true
+
+[node name="MetalPipe" type="AudioStreamPlayer" parent="."]
+
+[node name="ManScreaming" type="AudioStreamPlayer" parent="."]
+
+[node name="Villagers" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_656y5")
+
+[connection signal="pressed" from="PLAY" to="." method="_on_play_pressed"]

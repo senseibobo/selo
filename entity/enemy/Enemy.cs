@@ -4,11 +4,13 @@ using System.Collections.Generic;
 
 public partial class Enemy : Entity
 {
+
+    [Export] AudioStreamPlayer3D _soundPlayer;
     protected static List<string> _maleNamePool = new();
     protected static List<string> _femaleNamePool = new();
 
-    protected static List<string> _maleFirstNames = new List<string> { "Jorgovan", "Milorad", "Draško", "Srđan", "Stojan", "Ljubivoje", "Rastko", "Srbobran", "Srećko", "Miodrag" };
-    protected static List<string> _femaleFirstNames = new List<string> { "Jorgovanka", "Jelisaveta", "Zorica", "Stanimirka", "Bogosava", "Živka", "Jelka", "Mirka", "Smiljka" };
+    protected static List<string> _maleFirstNames = new List<string> { "Boban", "Stanimir", "Jorgovan", "Stribor", "Milorad", "Draško", "Srđan", "Stojan", "Ljubivoje", "Rastko", "Srbobran", "Srećko", "Miodrag" };
+    protected static List<string> _femaleFirstNames = new List<string> { "Jorgovanka", "Milunka", "Gorsana", "Stragica", "Bilunka", "Stasnimirka", "Jelisaveta", "Zorica", "Stanimirka", "Bogosava", "Živka", "Jelka", "Mirka", "Smiljka" };
 
     protected static List<string> _lastNames = new List<string> { "Janković", "Ristić", "Marković", "Stojković", "Branković", "Marinković", "Isaković", "Jovanović" };
 
@@ -206,5 +208,11 @@ public partial class Enemy : Entity
             // StandardMaterial3D mat = GetNode<MeshInstance3D>("MeshInstance3D").MaterialOverride as StandardMaterial3D;
             // mat.AlbedoColor = Colors.Aqua;
         }
+    }
+
+    public override void Hit(float damage, Vector3 direction)
+    {
+        base.Hit(damage, direction);
+        _soundPlayer.Call("play_sound");
     }
 }
