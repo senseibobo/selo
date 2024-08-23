@@ -16,8 +16,9 @@ public partial class Entity : CharacterBody3D
     }
 
     [Export] protected Node3D _weaponsNode;
+    [Export] protected PlayerCamera _camera;
 
-    public virtual float MaxHealth => 100f;
+    public virtual float MaxHealth => 700f;
     public virtual float MovementSpeed => 10.0f;
     public virtual float Acceleration => 80.0f;
     public virtual float Deceleration => 120.0f;
@@ -71,7 +72,7 @@ public partial class Entity : CharacterBody3D
         _yVelocity = Velocity.Y;
         if (GlobalPosition.Y < -100f)
         {
-            Death();
+            Death(null);
         }
     }
 
@@ -118,12 +119,12 @@ public partial class Entity : CharacterBody3D
         Velocity = new Vector3(xzVelocity.X, _yVelocity, xzVelocity.Y);
     }
 
-    public virtual void Hit(float damage, Vector3 direction)
+    public virtual void Hit(float damage, Vector3 direction, Entity dealer)
     {
         Health -= damage;
         if (Health <= 0)
         {
-            Death();
+            Death(dealer);
             return;
         }
         _entityState = EntityState.Sliding;
@@ -160,9 +161,23 @@ public partial class Entity : CharacterBody3D
         _weapon.Owner = this;
     }
 
-    protected void Death()
+    protected virtual void Death(Entity killer)
     {
+        if (_camera != null)
+        {
+            if (killer == null) killer = Entities[(int)Random.Shared.NextInt64() % Entities.Count];
+            ReparentCamera(killer);
+        }
         QueueFree();
+    }
+
+    protected void ReparentCamera(Entity newOwner)
+    {
+        Vector3 oldPos = _camera.Position;
+        _camera.Reparent(newOwner);
+        _camera.Position = oldPos;
+        newOwner._camera = _camera;
+        _camera.Rotation = new Vector3();
     }
 
     private void OnWeaponFinishedAttack()

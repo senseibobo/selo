@@ -5,7 +5,6 @@ public partial class Player : Entity
 {
     public static Player Instance;
     public virtual float Sensitivity => 1f;
-    [Export] PlayerCamera _camera;
 
     public override void _EnterTree()
     {
@@ -63,9 +62,15 @@ public partial class Player : Entity
         }
     }
 
-    public override void Hit(float damage, Vector3 direction)
+    public override void Hit(float damage, Vector3 direction, Entity dealer)
     {
-        base.Hit(damage, direction);
+        base.Hit(damage, direction, dealer);
         _camera.ShakeScreen(damage / 20f, 600f, 0.5f);
+    }
+
+    protected override void Death(Entity killer)
+    {
+        base.Death(killer);
+        GetTree().Root.GetNode("DeathOverlay").Call("enable");
     }
 }

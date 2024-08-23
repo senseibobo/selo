@@ -37,7 +37,7 @@ public partial class Enemy : Entity
     private float _entityTargetTimer;
     private float _attackTimer;
     public virtual float EntityTargetTime => 5f;
-    public virtual float AttackTime => 0.4f;
+    public virtual float AttackTime => 0.7f;
 
     static Enemy()
     {
@@ -210,9 +210,9 @@ public partial class Enemy : Entity
         }
     }
 
-    public override void Hit(float damage, Vector3 direction)
+    public override void Hit(float damage, Vector3 direction, Entity dealer)
     {
-        base.Hit(damage, direction);
+        base.Hit(damage, direction, dealer);
         _soundPlayer.Call("play_sound");
     }
 }

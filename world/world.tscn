@@ -463,3 +463,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 294.535, 16.7511, 259.205)
 
 [node name="AxePickup5" parent="." instance=ExtResource("4_ahf2w")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 289.613, 16.2832, 260.862)
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]

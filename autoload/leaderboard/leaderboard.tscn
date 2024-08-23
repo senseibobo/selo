@@ -109,7 +109,7 @@ _data = {
 }
 
 [node name="Leaderboard" type="CanvasLayer" node_paths=PackedStringArray("_leaderboardContainer", "_animationPlayer", "_judgementLabel")]
-visible = false
+layer = 20
 script = ExtResource("1_nu0cv")
 _leaderboardContainer = NodePath("LeaderboardContainer")
 _leaderboardEntryScene = ExtResource("2_qpmui")

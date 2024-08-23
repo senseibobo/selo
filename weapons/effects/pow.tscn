@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctmfirxjx8cqb"]
+
+[ext_resource type="Script" path="res://weapons/effects/pow.gd" id="1_2sgif"]
+[ext_resource type="Texture2D" uid="uid://dknsoeqgfr8v5" path="res://textures/comicbookpow.png" id="2_12edb"]
+[ext_resource type="FontFile" uid="uid://bnwaa2wossu8s" path="res://ui/Another Danger - Demo.otf" id="3_dgm4q"]
+
+[node name="Pow" type="Node3D"]
+script = ExtResource("1_2sgif")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+billboard = 1
+alpha_cut = 1
+texture = ExtResource("2_12edb")
+region_enabled = true
+region_rect = Rect2(0, 0, 160, 160)
+
+[node name="Label3D" type="Label3D" parent="Sprite3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0496138)
+billboard = 1
+text = "POW!"
+font = ExtResource("3_dgm4q")
+font_size = 40
+outline_size = 30

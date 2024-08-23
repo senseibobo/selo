@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CS106PZ")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+88971c20c0f17ef5c435c61ac441196e8e3ddab1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d095fb099318593b9b2fa50ea9a907e2034c268")]
 [assembly: System.Reflection.AssemblyProductAttribute("CS106PZ")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CS106PZ")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

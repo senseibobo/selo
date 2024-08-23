@@ -1,6 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcyqi0m210x28"]
+[gd_scene load_steps=8 format=3 uid="uid://bcyqi0m210x28"]
 
 [ext_resource type="Script" path="res://weapons/Weapon.cs" id="1_7keqr"]
+[ext_resource type="PackedScene" uid="uid://ctmfirxjx8cqb" path="res://weapons/effects/pow.tscn" id="2_u3ikk"]
+[ext_resource type="AudioStream" uid="uid://pxiq1m1i02ud" path="res://sound/hit3.ogg" id="3_ad53x"]
+[ext_resource type="AudioStream" uid="uid://dwi8fhgca28gj" path="res://sound/hit4.ogg" id="4_bl8g6"]
+[ext_resource type="AudioStream" uid="uid://dlhbs2u5ynv3a" path="res://sound/hit5.ogg" id="5_g4fto"]
+[ext_resource type="AudioStream" uid="uid://iuy7s0qc2uuj" path="res://sound/hit6.ogg" id="6_mvvjm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sccuu"]
 size = Vector3(1, 1, 2.40482)
@@ -10,6 +15,8 @@ script = ExtResource("1_7keqr")
 _animationPlayer = NodePath("AnimationPlayer")
 _hitArea = NodePath("HitArea")
 WeaponMesh = NodePath("WeaponMesh")
+_powScene = ExtResource("2_u3ikk")
+_hitSounds = Array[AudioStream]([ExtResource("3_ad53x"), ExtResource("4_bl8g6"), ExtResource("5_g4fto"), ExtResource("6_mvvjm")])
 
 [node name="WeaponMesh" type="MeshInstance3D" parent="."]
 skeleton = NodePath("")

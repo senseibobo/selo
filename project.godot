@@ -10,14 +10,18 @@ config_version=5
 
 [application]
 
-config/name="CS106PZ"
+config/name="Village Rage"
 run/main_scene="res://ui/main_menu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
-config/icon="res://icon.svg"
+boot_splash/image="res://textures/villagerhut.png"
+config/icon="res://icon.png"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
 Leaderboard="*res://autoload/leaderboard/leaderboard.tscn"
+Transition="*res://autoload/transition.tscn"
+DeathOverlay="*res://autoload/death_overlay.tscn"
 
 [display]
 

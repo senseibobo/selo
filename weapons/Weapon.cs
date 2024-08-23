@@ -1,4 +1,5 @@
 using Godot;
+using Godot.Collections;
 using System;
 
 public partial class Weapon : Node3D
@@ -11,6 +12,8 @@ public partial class Weapon : Node3D
     [Export] protected Area3D _hitArea;
     [Export] public MeshInstance3D WeaponMesh;
     [Export] public PackedScene _pickupScene;
+    [Export] protected PackedScene _powScene;
+    [Export] protected Godot.Collections.Array<AudioStream> _hitSounds;
 
     public override void _EnterTree()
     {
@@ -40,10 +43,28 @@ public partial class Weapon : Node3D
             Node parent = area.GetParent();
             if (parent is Entity entity && parent != Owner)
             {
-                entity.Hit(Damage, -GlobalBasis.Z.Normalized());
+                entity.Hit(Damage, -GlobalBasis.Z.Normalized(), Owner as Entity);
+                Node3D powInstance = _powScene.Instantiate<Node3D>();
+                GetTree().CurrentScene.AddChild(powInstance);
+                float r1 = Random.Shared.NextSingle() - 0.5f;
+                float r2 = Random.Shared.NextSingle() - 0.5f;
+                float r3 = Random.Shared.NextSingle() - 0.5f;
+                powInstance.GlobalPosition = entity.GlobalPosition + Vector3.Up * 1.2f + new Vector3(r1, r2, r3) * 0.6f;
                 (Owner as Entity).LeaderboardEntry.AddDamage(Damage);
+                PlayHitSound();
             }
         }
+    }
+
+    protected void PlayHitSound()
+    {
+        AudioStream sound = _hitSounds.PickRandom();
+        AudioStreamPlayer3D player = new AudioStreamPlayer3D();
+        player.Stream = sound;
+        AddChild(player);
+        player.GlobalPosition = GlobalPosition;
+        player.Finished += player.QueueFree;
+        player.Play();
     }
 
     public virtual void ProcessAi(Entity owner)
